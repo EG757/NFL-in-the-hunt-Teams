@@ -1,0 +1,45 @@
+---
+title: "In the hunt Analysis NFL Playoffs"
+author: "Eddy Gekosky"
+date: "1/6/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidymodels)
+library(scales)
+library(modelr)
+library(readxl)
+```
+
+
+
+```{r}
+ad <- Teams_in_the_hunt
+```
+
+
+
+```{r}
+ad%>%
+  summarize(mean(Win))
+
+ad%>%
+  group_by(Vs_Playoff_Team==1 | Vs_Team_ITH==1)%>%
+  summarize(mean(Win))
+
+ad%>%
+  group_by(Vs_Playoff_Team)%>%
+  summarize(mean(Win))
+```
+
+
+In the end, teams in the hunt going into the last week of the NFL season won 61.5% of the time. Against teams who were completely eliminated from the playoffs, these "in the hunt" teams won 83.3% of the time while they only won 48% of the time against team that had clinched playoffs.
+
+
+
+
+
